@@ -8,7 +8,8 @@ require('reshape2')
 activity <- read.table('./UCI HAR Dataset/activity_labels.txt')[,2]
 features <- read.table('./UCI HAR Dataset/features.txt')[,2]
 
-subject <- read.table('./UCI HAR Dataset/train/subject_train.txt')
+subjectTest <- read.table('./UCI HAR Dataset/test/subject_test.txt')
+subjectTrain <- read.table('./UCI HAR Dataset/train/subject_train.txt')
 
 ##data from the test folder
 xtest <- read.table('./UCI HAR Dataset/test/X_test.txt') 
@@ -28,17 +29,17 @@ xtrain = xtrain[,extract]
 names(xtest) = features
 ytest[,2] = activity[ytest[,1]]
 names(ytest) = c('Activity_ID', 'Activity_Label')
-names(subject) = 'subject'
+names(subjectTest) = 'subject'
 
 names(xtrain) = features
 ytrain[,2] = activity[ytrain[,1]]
 names(ytrain) = c('Activity_ID', 'Activity_Label')
-names(subject) = 'subject'
+names(subjectTrain) = 'subject'
 
 
 ##binding of the data
-testd <- cbind(as.data.table(subject), ytest, xtest)
-traind <- cbind(as.data.table(subject), ytrain, xtrain)
+testd <- cbind(as.data.table(subjectTest), ytest, xtest)
+traind <- cbind(as.data.table(subjectTrain), ytrain, xtrain)
 
 data = rbind(testd, traind)
 
