@@ -45,10 +45,11 @@ data = rbind(testd, traind)
 
 idlabels = c('subject', 'Activity_ID', 'Activity_Label')
 data_labels = setdiff(colnames(data), idlabels)
+##melting of data from a set of columns into one
 melt_data = melt(data, id = idlabels, measure.vars = data_labels)
-
+##exporting of the data into tidy data
 tidy_data = dcast(melt_data, subject + Activity_Label ~ variable, mean)
-
+##writing to the file
 write.table(tidy_data, file = './tidy_data.txt', row.name = FALSE)
 
 
