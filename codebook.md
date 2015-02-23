@@ -15,4 +15,6 @@ After that the names for the X_test are pulled from features dataset and assigne
 
 Y_test and Y_train names are assigned the headers 'Activity_ID' and 'Activity_Label' while the subject is given the header of 'subject'
 
-After that the data is 
+After that the data is binded together testd is assigned data from subject_Test, Y_Test, X_test. While traind is assigned data from subject_train, Y_train, X_train. Then the data is rbind together and assigned to 'data'.
+
+From there Subject labels are added and the data is melted into one column and exported into the file Tidy Data.
